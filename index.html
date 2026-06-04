@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pier 99 Marina | Warsaw, Kentucky</title>
+  <meta name="description" content="First-pass website concept for Pier 99 Marina in Warsaw, Kentucky — covered slips, transient dockage, ethanol-free marine fuel, ship store, and Ohio River boating community." />
+  <style>
+    :root{
+      --river:#0d3f4d;
+      --river-2:#155f6d;
+      --deep:#062b35;
+      --ink:#13252a;
+      --muted:#65757a;
+      --sand:#f6efe2;
+      --sand-2:#fff9ee;
+      --rope:#c28b39;
+      --rope-dark:#9c6426;
+      --foam:#e9f5f4;
+      --white:#ffffff;
+      --line:rgba(13,63,77,.16);
+      --shadow:0 24px 70px rgba(6,43,53,.16);
+      --radius:24px;
+      --radius-sm:14px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:linear-gradient(180deg,var(--sand-2) 0%,#fff 38%,var(--foam) 100%);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.5;
+    }
+    img,svg{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    .topbar{
+      background:var(--deep);
+      color:rgba(255,255,255,.9);
+      font-size:14px;
+      letter-spacing:.01em;
+    }
+    .topbar-inner{
+      max-width:var(--max); margin:auto; padding:10px 22px;
+      display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap;
+    }
+    .topbar a{text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-underline-offset:3px}
+    header{
+      position:sticky; top:0; z-index:10;
+      background:rgba(255,249,238,.9); backdrop-filter: blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{max-width:var(--max); margin:auto; padding:16px 22px; display:flex; align-items:center; justify-content:space-between; gap:22px}
+    .brand{display:flex; align-items:center; gap:14px; min-width:210px}
+    .mark{
+      width:54px; height:54px; border-radius:50%;
+      background:radial-gradient(circle at 35% 30%,#fff 0 14%,var(--rope) 15% 30%,var(--river) 31% 100%);
+      display:grid; place-items:center; color:white; font-weight:900; letter-spacing:-.08em;
+      border:3px solid rgba(255,255,255,.9); box-shadow:0 8px 24px rgba(13,63,77,.25);
+    }
+    .brand strong{display:block; font-size:21px; letter-spacing:.02em; color:var(--deep)}
+    .brand span{display:block; font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.16em; margin-top:-1px}
+    .navlinks{display:flex; align-items:center; gap:22px; font-weight:700; font-size:14px; color:#25434a}
+    .navlinks a{padding:9px 0; border-bottom:2px solid transparent}
+    .navlinks a:hover{border-color:var(--rope)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      min-height:46px; padding:12px 18px; border-radius:999px;
+      background:var(--rope); color:#fff; font-weight:800; border:1px solid rgba(0,0,0,.05);
+      box-shadow:0 12px 26px rgba(156,100,38,.22); transition:.18s ease;
+    }
+    .btn:hover{transform:translateY(-1px); background:var(--rope-dark)}
+    .btn.secondary{background:#fff; color:var(--river); box-shadow:none; border-color:var(--line)}
+    .hero{
+      position:relative; overflow:hidden; color:white; background:var(--deep);
+    }
+    .hero:before{
+      content:""; position:absolute; inset:0;
+      background:
+        linear-gradient(90deg,rgba(6,43,53,.9) 0%, rgba(6,43,53,.76) 42%, rgba(6,43,53,.34) 100%),
+        radial-gradient(circle at 78% 28%, rgba(194,139,57,.48), transparent 28%),
+        linear-gradient(135deg,#0b5361,#082d37 46%,#0a6471);
+    }
+    .hero:after{
+      content:""; position:absolute; inset:auto -5% -80px -5%; height:220px;
+      background:repeating-linear-gradient(170deg, rgba(255,255,255,.08) 0 2px, transparent 2px 32px);
+      transform:rotate(-2deg);
+    }
+    .hero-inner{position:relative; max-width:var(--max); margin:auto; padding:92px 22px 78px; display:grid; grid-template-columns:1.03fr .97fr; gap:54px; align-items:center}
+    .eyebrow{color:#ffd99b; text-transform:uppercase; letter-spacing:.18em; font-size:13px; font-weight:900; margin-bottom:18px}
+    h1{font-family: Georgia, "Times New Roman", serif; font-size:clamp(52px,7vw,92px); line-height:.9; letter-spacing:-.055em; margin:0 0 24px; text-wrap:balance}
+    .lead{font-size:clamp(18px,2vw,23px); color:rgba(255,255,255,.86); max-width:650px; margin:0 0 30px}
+    .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:34px}
+    .quick-card{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:1px; overflow:hidden;
+      background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.2); border-radius:22px;
+      max-width:650px;
+    }
+    .quick-card div{background:rgba(255,255,255,.08); padding:18px}
+    .quick-card b{display:block; font-size:15px; margin-bottom:4px}
+    .quick-card span{font-size:13px; color:rgba(255,255,255,.75)}
+    .hero-photo{
+      min-height:540px; border-radius:34px; padding:18px; background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.22); box-shadow:var(--shadow); transform:rotate(1.2deg);
+    }
+    .photo-placeholder{
+      height:100%; min-height:500px; border-radius:24px; position:relative; overflow:hidden;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.04)),
+        linear-gradient(140deg,#83b6bd 0 24%,#f5d49b 25% 33%,#166171 34% 58%,#0b4350 59% 100%);
+      display:flex; align-items:flex-end;
+    }
+    .photo-placeholder:before{content:""; position:absolute; inset:0; background:repeating-linear-gradient(90deg, transparent 0 54px, rgba(255,255,255,.16) 54px 57px, transparent 57px 116px)}
+    .photo-caption{position:relative; margin:18px; padding:16px; border-radius:18px; background:rgba(6,43,53,.82); color:#fff; backdrop-filter:blur(10px)}
+    .photo-caption strong{display:block; color:#ffd99b; margin-bottom:4px}
+    section{padding:82px 22px}
+    .wrap{max-width:var(--max); margin:auto}
+    .section-head{display:flex; align-items:end; justify-content:space-between; gap:28px; margin-bottom:34px}
+    .section-head h2{font-family:Georgia,"Times New Roman",serif; font-size:clamp(36px,5vw,58px); line-height:1; letter-spacing:-.045em; margin:0; color:var(--deep); max-width:760px}
+    .section-head p{margin:0; color:var(--muted); max-width:410px; font-size:17px}
+    .services{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+    .service{background:white; border:1px solid var(--line); border-radius:var(--radius); padding:24px; box-shadow:0 18px 50px rgba(13,63,77,.08); min-height:230px; display:flex; flex-direction:column; justify-content:space-between}
+    .service .icon{width:48px; height:48px; border-radius:16px; background:var(--foam); color:var(--river); display:grid; place-items:center; font-weight:900; margin-bottom:20px}
+    .service h3{font-size:22px; line-height:1.05; margin:0 0 10px; color:var(--deep)}
+    .service p{margin:0; color:var(--muted)}
+    .feature-band{background:var(--deep); color:white; position:relative; overflow:hidden}
+    .feature-band:before{content:""; position:absolute; inset:0; background:radial-gradient(circle at 12% 20%,rgba(194,139,57,.35),transparent 28%), radial-gradient(circle at 84% 74%,rgba(43,138,154,.42),transparent 30%)}
+    .feature-grid{position:relative; display:grid; grid-template-columns:.92fr 1.08fr; gap:36px; align-items:center}
+    .feature-grid h2{font-family:Georgia,"Times New Roman",serif; font-size:clamp(38px,5vw,68px); line-height:1; letter-spacing:-.05em; margin:0 0 20px}
+    .feature-grid p{color:rgba(255,255,255,.78); font-size:18px; margin:0 0 22px}
+    .amenity-list{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:28px}
+    .amenity{padding:13px 14px; border:1px solid rgba(255,255,255,.15); border-radius:14px; background:rgba(255,255,255,.07); color:rgba(255,255,255,.9); font-weight:700}
+    .image-stack{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    .mini-photo{min-height:220px; border-radius:24px; background:linear-gradient(135deg,#d7eced,#79aeb7 52%,#0f5563); border:1px solid rgba(255,255,255,.18); padding:16px; display:flex; align-items:flex-end; color:white; box-shadow:0 20px 60px rgba(0,0,0,.18); position:relative; overflow:hidden}
+    .mini-photo:nth-child(2){margin-top:42px; background:linear-gradient(135deg,#f7e3bd,#c99645 42%,#0e4e59)}
+    .mini-photo:nth-child(3){margin-top:-42px; background:linear-gradient(135deg,#e9f5f4,#2f7884 50%,#092e38)}
+    .mini-photo:nth-child(4){background:linear-gradient(135deg,#f7f1e4,#98b8a8 44%,#15404b)}
+    .mini-photo:before{content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 35%,rgba(6,43,53,.82))}
+    .mini-photo span{position:relative; font-weight:850; text-shadow:0 2px 20px rgba(0,0,0,.35)}
+    .gallery{display:grid; grid-template-columns:1.2fr .8fr .8fr; gap:16px}
+    .gallery-card{min-height:270px; border-radius:26px; overflow:hidden; background:white; border:1px solid var(--line); box-shadow:0 18px 60px rgba(13,63,77,.09)}
+    .gallery-card.large{grid-row:span 2; min-height:560px}
+    .ph{height:70%; min-height:190px; background:linear-gradient(135deg,#a7d3d7,#1c6c79 52%,#08333d); position:relative; overflow:hidden}
+    .gallery-card:nth-child(2) .ph{background:linear-gradient(135deg,#f1d197,#bd7c30 45%,#143f49)}
+    .gallery-card:nth-child(3) .ph{background:linear-gradient(135deg,#f7efe3,#7ba58f 48%,#0c4551)}
+    .gallery-card:nth-child(4) .ph{background:linear-gradient(135deg,#e6f1f4,#8aaab0 45%,#113c45)}
+    .gallery-card:nth-child(5) .ph{background:linear-gradient(135deg,#dff0ef,#5d9aa5 50%,#0b3740)}
+    .ph:after{content:""; position:absolute; inset:0; background:repeating-linear-gradient(135deg,rgba(255,255,255,.15) 0 2px, transparent 2px 34px)}
+    .gallery-card .copy{padding:18px 20px 22px}
+    .gallery-card h3{margin:0 0 6px; color:var(--deep); font-size:20px}
+    .gallery-card p{margin:0; color:var(--muted); font-size:14px}
+    .visit{display:grid; grid-template-columns:1fr 1fr; gap:24px}
+    .contact-card{border-radius:30px; background:white; border:1px solid var(--line); padding:30px; box-shadow:var(--shadow)}
+    .contact-card h2{font-family:Georgia,"Times New Roman",serif; color:var(--deep); font-size:44px; line-height:1; letter-spacing:-.04em; margin:0 0 18px}
+    .contact-row{display:grid; grid-template-columns:110px 1fr; gap:16px; padding:16px 0; border-top:1px solid var(--line)}
+    .contact-row b{color:var(--deep)}
+    .contact-row span,.contact-row a{color:var(--muted)}
+    .map-card{border-radius:30px; overflow:hidden; background:var(--deep); color:white; min-height:460px; position:relative; padding:30px; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow)}
+    .map-card:before{content:""; position:absolute; inset:0; background:radial-gradient(circle at 70% 30%,rgba(194,139,57,.45),transparent 24%), repeating-linear-gradient(28deg,rgba(255,255,255,.08) 0 2px,transparent 2px 50px)}
+    .map-card > *{position:relative}
+    .map-card h3{font-family:Georgia,"Times New Roman",serif; font-size:40px; margin:0; letter-spacing:-.04em}
+    .map-river{height:160px; border-radius:80px; border:2px dashed rgba(255,255,255,.55); display:grid; place-items:center; color:#ffd99b; font-weight:900; transform:rotate(-8deg)}
+    .owner{background:linear-gradient(180deg,#fff,var(--sand-2));}
+    .owner-grid{display:grid; grid-template-columns:.8fr 1.2fr; gap:34px; align-items:center}
+    .portrait{min-height:430px; border-radius:32px; background:linear-gradient(135deg,#f5e2bf,#b9823e 43%,#0d5361); box-shadow:var(--shadow); padding:20px; display:flex; align-items:flex-end; color:white; position:relative; overflow:hidden}
+    .portrait:before{content:""; position:absolute; width:220px; height:220px; border-radius:50%; background:rgba(255,255,255,.18); top:50px; left:50%; transform:translateX(-50%)}
+    .portrait:after{content:""; position:absolute; width:320px; height:250px; border-radius:48% 48% 0 0; background:rgba(6,43,53,.42); bottom:0; left:50%; transform:translateX(-50%)}
+    .portrait span{position:relative; background:rgba(6,43,53,.78); padding:14px 16px; border-radius:16px}
+    .owner-copy h2{font-family:Georgia,"Times New Roman",serif; font-size:clamp(36px,5vw,58px); line-height:1; letter-spacing:-.045em; color:var(--deep); margin:0 0 18px}
+    .owner-copy p{font-size:18px; color:var(--muted); margin:0 0 18px}
+    .note{background:var(--foam); border-left:5px solid var(--rope); padding:18px; border-radius:16px; color:#34545a}
+    footer{background:var(--deep); color:white; padding:46px 22px}
+    .footer-inner{max-width:var(--max); margin:auto; display:grid; grid-template-columns:1fr auto; gap:24px; align-items:center}
+    footer p{margin:6px 0 0; color:rgba(255,255,255,.68)}
+    @media (max-width: 950px){
+      .nav{align-items:flex-start}.navlinks{display:none}.hero-inner,.feature-grid,.visit,.owner-grid{grid-template-columns:1fr}.hero-photo{min-height:420px}.services{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:1fr 1fr}.gallery-card.large{grid-row:auto; min-height:360px}.section-head{display:block}.section-head p{margin-top:14px}.footer-inner{grid-template-columns:1fr}
+    }
+    @media (max-width: 620px){
+      .topbar-inner{display:block}.topbar-inner span{display:block;margin:5px 0}.nav{padding:14px}.brand strong{font-size:18px}.mark{width:48px;height:48px}.hero-inner{padding:60px 16px}.quick-card{grid-template-columns:1fr}.services,.gallery,.amenity-list,.image-stack{grid-template-columns:1fr}.mini-photo:nth-child(n){margin-top:0}.contact-row{grid-template-columns:1fr;gap:2px}section{padding:58px 16px}.hero-photo,.photo-placeholder{min-height:360px}.gallery-card.large{min-height:320px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span>Warsaw, Kentucky · Ohio River / Craig’s Creek boating country</span>
+      <span><a href="tel:+18595678811">(859) 567-8811</a> · <a href="#visit">Plan your visit</a></span>
+    </div>
+  </div>
+  <header>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Pier 99 Marina home">
+        <div class="mark">99</div>
+        <div><strong>Pier 99 Marina</strong><span>Warsaw, Kentucky</span></div>
+      </a>
+      <div class="navlinks">
+        <a href="#slips">Slips</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Photos</a>
+        <a href="#owner">Owner</a>
+        <a href="#visit">Contact</a>
+      </div>
+      <a class="btn" href="tel:+18595678811">Call the marina</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Full-service marina · Covered slips · Transients welcome</div>
+          <h1 id="hero-title">Your easy Ohio River landing.</h1>
+          <p class="lead">Pier 99 is a welcoming marina in Warsaw, Kentucky with covered slip rentals, ethanol-free marine fuel, a ship store, and the kind of dockside community that makes a river stop feel like home.</p>
+          <div class="hero-actions">
+            <a class="btn" href="tel:+18595678811">Reserve or ask about slips</a>
+            <a class="btn secondary" href="#gallery">View photo plan</a>
+          </div>
+          <div class="quick-card" aria-label="Quick marina highlights">
+            <div><b>Covered slips</b><span>Seasonal rentals and local boaters</span></div>
+            <div><b>Transient friendly</b><span>Passing through Warsaw? Call ahead.</span></div>
+            <div><b>Marine fuel</b><span>Ethanol-free fuel available</span></div>
+          </div>
+        </div>
+        <div class="hero-photo" aria-label="Hero image placeholder">
+          <div class="photo-placeholder">
+            <div class="photo-caption"><strong>Hero photo placeholder</strong>Golden-hour view from the docks: covered slips, calm water, boats tucked in, and the Kentucky shoreline in the distance.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Everything a boater needs for a good river day.</h2>
+          <p>Designed with the polish of a destination marina and the warmth of a local river landing, this first pass keeps Pier 99 focused: slips, fuel, store, community, and simple ways to get in touch.</p>
+        </div>
+        <div class="services">
+          <article class="service">
+            <div><div class="icon">01</div><h3>Covered slips for rent</h3><p>Protected dockage for local boaters who want a steady home base on the Ohio River.</p></div>
+          </article>
+          <article class="service">
+            <div><div class="icon">02</div><h3>Transient boaters welcome</h3><p>Traveling through Warsaw or Craig’s Creek? Call ahead for availability and dock guidance.</p></div>
+          </article>
+          <article class="service">
+            <div><div class="icon">03</div><h3>Ethanol-free marine fuel</h3><p>Fuel up with the right gas for boating, plus the convenience of a dockside marina stop.</p></div>
+          </article>
+          <article class="service">
+            <div><div class="icon">04</div><h3>Ship store & nautical boutique</h3><p>Everyday marina essentials, river-life gifts, boating supplies, snacks, and friendly help.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-band" id="slips">
+      <div class="wrap feature-grid">
+        <div>
+          <div class="eyebrow">Built around the boater</div>
+          <h2>A smaller marina with a full-service spirit.</h2>
+          <p>Pier 99 can feel elevated without losing its local character. The opportunity is a clear, welcoming, destination-quality presentation — practical for boaters, easy to navigate, and personal to Warsaw’s river community.</p>
+          <div class="amenity-list">
+            <div class="amenity">Covered dockage</div>
+            <div class="amenity">Fuel stop</div>
+            <div class="amenity">Ship store</div>
+            <div class="amenity">Local boating events</div>
+            <div class="amenity">Craig’s Creek access</div>
+            <div class="amenity">Community feel</div>
+          </div>
+        </div>
+        <div class="image-stack" aria-label="Facility image placeholders">
+          <div class="mini-photo"><span>Docks placeholder · orderly covered slips, clean walkways, visible signage</span></div>
+          <div class="mini-photo"><span>Ship store placeholder · warm shelves, marine essentials, nautical gifts</span></div>
+          <div class="mini-photo"><span>Grounds placeholder · parking, paths, grass, riverfront arrival</span></div>
+          <div class="mini-photo"><span>Fuel dock placeholder · safe, clear approach and friendly dock assistance</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Photo plan for the first real shoot.</h2>
+          <p>These are placeholders now, but the descriptions are written to guide real photography and give the site a polished marina-resort feel.</p>
+        </div>
+        <div class="gallery">
+          <article class="gallery-card large"><div class="ph"></div><div class="copy"><h3>Marina grounds</h3><p>Wide welcoming arrival shot: entrance signage, landscaped edges, parking, and the path toward the water.</p></div></article>
+          <article class="gallery-card"><div class="ph"></div><div class="copy"><h3>Covered docks</h3><p>Clean perspective down the covered slips with boats, dock boxes, water reflections, and warm morning light.</p></div></article>
+          <article class="gallery-card"><div class="ph"></div><div class="copy"><h3>Ship store</h3><p>Interior detail with marine supplies, nautical boutique items, snacks, counter service, and local character.</p></div></article>
+          <article class="gallery-card"><div class="ph"></div><div class="copy"><h3>Owner / dockmaster</h3><p>Friendly portrait on the dock or outside the store — approachable, knowledgeable, and ready to help.</p></div></article>
+          <article class="gallery-card"><div class="ph"></div><div class="copy"><h3>River life</h3><p>Boaters gathering, sunset over Craig’s Creek, a seasonal raft-up, or a calm evening from the marina.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="owner" id="owner">
+      <div class="wrap owner-grid">
+        <div class="portrait"><span>Owner portrait placeholder · smiling dockside portrait with Pier 99 in the background.</span></div>
+        <div class="owner-copy">
+          <div class="eyebrow" style="color:var(--rope-dark)">A personal marina welcome</div>
+          <h2>Come by, call ahead, and let us know what you need.</h2>
+          <p><strong>Draft copy:</strong> Pier 99 is the kind of place where boaters are known by name, travelers get pointed in the right direction, and a day on the river can turn into an evening with friends.</p>
+          <p>This section should eventually include the owner’s name, a short welcome note, and one strong portrait. The tone should be warm, plainspoken, capable, and proud of Warsaw’s river community.</p>
+          <div class="note">Content note: owner name, exact hours, slip availability, fuel hours, and any restroom/shower/laundry details should be confirmed before publishing.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="wrap visit">
+        <div class="contact-card">
+          <h2>Plan your stop at Pier 99.</h2>
+          <div class="contact-row"><b>Phone</b><a href="tel:+18595678811">(859) 567-8811</a></div>
+          <div class="contact-row"><b>Address</b><span>Knox Lillard Rd, Warsaw, KY, United States, Kentucky</span></div>
+          <div class="contact-row"><b>Online</b><a href="https://mooragemarket.com/moorage/4013/pier_99">mooragemarket.com/moorage/4013/pier_99</a></div>
+          <div class="contact-row"><b>Social</b><span>Facebook: Pier 99 Marina · Warsaw KY</span></div>
+          <div class="contact-row"><b>Known for</b><span>Covered slips, transient boaters, ethanol-free marine fuel, ship store and nautical boutique.</span></div>
+          <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="tel:+18595678811">Call now</a><a class="btn secondary" href="https://www.google.com/maps/search/?api=1&query=Knox%20Lillard%20Rd%20Warsaw%20KY">Open map</a></div>
+        </div>
+        <div class="map-card" aria-label="Map placeholder">
+          <div><div class="eyebrow">Map placeholder</div><h3>Warsaw, KY — where Craig’s Creek meets Ohio River boating.</h3></div>
+          <div class="map-river">Ohio River / Craig’s Creek area</div>
+          <p style="margin:0;color:rgba(255,255,255,.78)">Replace with embedded map, approach notes, waterway markers, and driving directions once confirmed.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="brand"><div class="mark">99</div><div><strong style="color:white">Pier 99 Marina</strong><span style="color:rgba(255,255,255,.62)">First-pass website concept</span></div></div>
+      <div><strong><a href="tel:+18595678811">(859) 567-8811</a></strong><p>Knox Lillard Rd · Warsaw, Kentucky</p></div>
+    </div>
+  </footer>
+</body>
+</html>
